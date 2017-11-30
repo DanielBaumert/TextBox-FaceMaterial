@@ -1,8 +1,6 @@
 # TextBox - FaceMaterial - WinForm
 
-<center># TextBox - FaceMaterial - WinForm
-
-<center> ![logo](https://raw.githubusercontent.com/facebamm/TextBox-FaceMaterial/master/Images/Form.png)</center>
+<center>![logo](https://raw.githubusercontent.com/facebamm/TextBox-FaceMaterial/master/Images/Form.png)</center>
 
 ### Type One - Single line 
 ********************************************************
