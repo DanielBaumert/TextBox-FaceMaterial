@@ -2,8 +2,6 @@
 
 <center>![form](https://github.com/facebamm/TextBox-FaceMaterial/raw/master/Images/Form.png)</center>
 
-
-
 ### Type One - Single line 
 ********************************************************
 ###### without text and with text
@@ -179,8 +177,44 @@ this.PatterTextBox.PatterError = System.Drawing.Color.Firebrick;
 this.PatterTextBox.UseSystemPasswordChar = false;
 ```	
 ### Type Five - Multi line auto size vertical
+###### With two lines and three lines
+ * ![singlelineempty](https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/MultiLineAutoSize1.png)
+ * ![singleline](https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/MultiLineAutoSize12.png)
+##### Settings 
 
+|Line |               | Text  | |Control||
+|:---|:-:|:-|:-:|:-|:-:
+| LineColor | DodgerBlue | AutoScaleByText | false |BackColor |FromArgb(36, 36, 36)
+| LineHeight  | 2 | ForeColor  | DodgerBlue |Padding | Padding(0, 0, 0, 2)
+| LineMarginHorizontal  | 0 | Input  | null |
+| LineMarginLeft  | 0 | Multiline  | **true** |
+| LineMarginRight  | 1 | AutoScaleByText | **true** |
+| LineMarginToText  | DodgerBlue | PasswortChar  | '\0' |
+|PatterError|Firebrick|Patter| null
+|||UseSystemPasswordChar| false
 
-[singlelineempty]: https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/SingleLineEmpty.png
-[singleline]: https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/SingleLine.png
-[logo]: https://github.com/facebamm/TextBox-FaceMaterial/raw/master/Images/Form.png 
+```csharp
+// 
+// MultiLineTextBox
+// 
+this.MultiLineTextBox.AutoScaleByText = false;
+this.MultiLineTextBox.BackColor = System.Drawing.Color.FromArgb(36, 36, 36);
+this.MultiLineTextBox.CueText = "";
+this.MultiLineTextBox.ForeColor = System.Drawing.Color.DodgerBlue;
+this.MultiLineTextBox.Input = null;
+this.MultiLineTextBox.IsntInput = null;
+this.MultiLineTextBox.LineColor = System.Drawing.Color.DodgerBlue;
+this.MultiLineTextBox.LineHeight = 2;
+this.MultiLineTextBox.LineMarginHorizontal = 0;
+this.MultiLineTextBox.LineMarginLeft = 0;
+this.MultiLineTextBox.LineMarginRight = 0;
+this.MultiLineTextBox.LineMarginToText = 1;
+this.MultiLineTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+this.MultiLineTextBox.Multiline = true;
+this.MultiLineTextBox.Name = "MultiLineTextBox";
+this.MultiLineTextBox.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+this.MultiLineTextBox.PasswortChar = '\0';
+this.MultiLineTextBox.Patter = null;
+this.MultiLineTextBox.PatterError = System.Drawing.Color.Red;
+this.MultiLineTextBox.UseSystemPasswordChar = false;
+```	
