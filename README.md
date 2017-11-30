@@ -1,5 +1,5 @@
 # TextBox - FaceMaterial - WinForm
-<center>![Logo]</center>
+![Logo](https://github.com/facebamm/TextBox-FaceMaterial/raw/master/Images/Form.png)
 
 ### Type One - Single line 
 ********************************************************
