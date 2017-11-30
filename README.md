@@ -1,5 +1,4 @@
 # TextBox - FaceMaterial - WinForm
-
 <center>![Logo]</center>
 
 ### Type One - Single line 
@@ -178,8 +177,8 @@ this.PatterTextBox.UseSystemPasswordChar = false;
 ```	
 ### Type Five - Multi line auto size vertical
 ###### With two lines and three lines
- * ![MultiLineAutoSize1](https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/MultiLineAutoSize1.png)
- * ![MultiLineAutoSize2](https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/MultiLineAutoSize12.png)
+ * ![MultiLineAutoSize](https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/MultiLineAutoSize.png)
+ * ![MultiLineAutoSize2](https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/MultiLineAutoSize2.png)
 ##### Settings 
 
 |Line |               | Text  | |Control||
@@ -218,5 +217,4 @@ this.MultiLineTextBox.Patter = null;
 this.MultiLineTextBox.PatterError = System.Drawing.Color.Red;
 this.MultiLineTextBox.UseSystemPasswordChar = false;
 ```	
-
 [Logo]: https://github.com/facebamm/TextBox-FaceMaterial/raw/master/Images/Form.png
