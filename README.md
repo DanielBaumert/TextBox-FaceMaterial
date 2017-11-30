@@ -1,6 +1,6 @@
 # TextBox - FaceMaterial - WinForm
 
-<center>![form](https://github.com/facebamm/TextBox-FaceMaterial/raw/master/Images/Form.png)</center>
+<center> ![Logo] </center>
 
 ### Type One - Single line 
 ********************************************************
@@ -218,3 +218,5 @@ this.MultiLineTextBox.Patter = null;
 this.MultiLineTextBox.PatterError = System.Drawing.Color.Red;
 this.MultiLineTextBox.UseSystemPasswordChar = false;
 ```	
+
+[Logo]: https://github.com/facebamm/TextBox-FaceMaterial/raw/master/Images/Form.png
