@@ -1,6 +1,6 @@
 # TextBox - FaceMaterial - WinForm
 
-<center>![logo]</center>
+<center>![form](https://github.com/facebamm/TextBox-FaceMaterial/raw/master/Images/Form.png)</center>
 
 
 
@@ -109,14 +109,14 @@ this.MultiLineTextBox.UseSystemPasswordChar = false;
 | LineMarginToText  | DodgerBlue | PasswortChar  | **'●'** |
 |PatterError|Firebrick|Patter| null
 |||UseSystemPasswordChar| **true**
-|||CueText|**Password**
+|||CueText|**Passwort**
 ```csharp
 // 
 // MultiLineTextBox
 // 
 this.PasswordTextBox.AutoScaleByText = false;
 this.PasswordTextBox.BackColor = System.Drawing.Color.FromArgb(36, 36, 36);
-this.PasswordTextBox.CueText = "";
+this.PasswordTextBox.CueText = "Passwort";
 this.PasswordTextBox.ForeColor = System.Drawing.Color.DodgerBlue;
 this.PasswordTextBox.Input = null;
 this.PasswordTextBox.IsntInput = null;
@@ -137,7 +137,47 @@ this.PasswordTextBox.UseSystemPasswordChar = true;
 ```	
 
 ### Type Four - Patter
+###### without password and with paassword
+ * ![PatterEmpty](https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/PatterEmpty.png)
+ * ![PatterWrong](https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/PatterWrong.png) 
+ * ![PatterRight](https://github.com/facebamm/TextBox-FaceMaterial/blob/master/Images/PatterRight.png)
+##### Settings 
 
+|Line |               | Text  | |Control||
+|:---|:-:|:-|:-:|:-|:-:
+| LineColor | DodgerBlue | AutoScaleByText | false |BackColor |FromArgb(36, 36, 36)
+| LineHeight  | 2 | ForeColor  | DodgerBlue |Padding | Padding(0, 0, 0, 2)
+| LineMarginHorizontal  | 0 | Input  | null |
+| LineMarginLeft  | 0 | Multiline  | false |
+| LineMarginRight  | 1 | AutoScaleByText | false |
+| LineMarginToText  | DodgerBlue | PasswortChar  | '\0' |
+|PatterError|Firebrick|Patter| **Daniel**
+|IsntInput|**FromArgb(64, 64, 64)**|UseSystemPasswordChar| false
+|||CueText|**Geben sie Daniel ein!**
+```csharp
+// 
+// PatterTextBox
+// 
+this.PatterTextBox.AutoScaleByText = false;
+this.PatterTextBox.BackColor = System.Drawing.Color.FromArgb(36, 36, 36);
+this.PatterTextBox.CueText = "Geben sie Daniel ein!";
+this.PatterTextBox.ForeColor = System.Drawing.Color.DodgerBlue;
+this.PatterTextBox.Input = null;
+this.PatterTextBox.IsntInput = System.Drawing.Color.FromArgb(64, 64, 64);
+this.PatterTextBox.LineColor = System.Drawing.Color.DodgerBlue;
+this.PatterTextBox.LineHeight = 2;
+this.PatterTextBox.LineMarginHorizontal = 0;
+this.PatterTextBox.LineMarginLeft = 0;
+this.PatterTextBox.LineMarginRight = 0;
+this.PatterTextBox.LineMarginToText = 1;
+this.PatterTextBox.Multiline = false;
+this.PatterTextBox.Name = "PatterTextBox";
+this.PatterTextBox.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+this.PatterTextBox.PasswortChar = '\0';
+this.PatterTextBox.Patter = "Daniel"; //Regex/Patter supported
+this.PatterTextBox.PatterError = System.Drawing.Color.Firebrick;
+this.PatterTextBox.UseSystemPasswordChar = false;
+```	
 ### Type Five - Multi line auto size vertical
 
 
