@@ -1,6 +1,6 @@
 # TextBox - FaceMaterial - WinForm
 
-<center> ![Logo] </center>
+<center>![Logo]</center>
 
 ### Type One - Single line 
 ********************************************************
