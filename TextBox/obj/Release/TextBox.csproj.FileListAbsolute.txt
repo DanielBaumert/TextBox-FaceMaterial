@@ -1,0 +1,8 @@
+C:\Users\Facebamm\source\Mappe\FaceMaterial\UI\TextBox\TextBox\bin\Release\TextBox.dll
+C:\Users\Facebamm\source\Mappe\FaceMaterial\UI\TextBox\TextBox\bin\Release\TextBox.pdb
+C:\Users\Facebamm\source\Mappe\FaceMaterial\UI\TextBox\TextBox\obj\Release\TextBox.csprojResolveAssemblyReference.cache
+C:\Users\Facebamm\source\Mappe\FaceMaterial\UI\TextBox\TextBox\obj\Release\FaceMaterial.UI.TextBox.resources
+C:\Users\Facebamm\source\Mappe\FaceMaterial\UI\TextBox\TextBox\obj\Release\TextBox.csproj.GenerateResource.Cache
+C:\Users\Facebamm\source\Mappe\FaceMaterial\UI\TextBox\TextBox\obj\Release\TextBox.csproj.CoreCompileInputs.cache
+C:\Users\Facebamm\source\Mappe\FaceMaterial\UI\TextBox\TextBox\obj\Release\TextBox.dll
+C:\Users\Facebamm\source\Mappe\FaceMaterial\UI\TextBox\TextBox\obj\Release\TextBox.pdb

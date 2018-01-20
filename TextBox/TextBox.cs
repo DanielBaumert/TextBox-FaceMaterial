@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace FaceMaterial.UI {
+
     public partial class TextBox : UserControl {
         private delegate void LineSizeStateSwitchHandle();
 
@@ -135,8 +136,11 @@ namespace FaceMaterial.UI {
         private string _Text;
         [Category("Text")]
         [Editor(typeof(System.ComponentModel.Design.MultilineStringEditor), typeof(UITypeEditor))]
+        [Browsable(true)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [EditorBrowsable(EditorBrowsableState.Always)]
-        public string Input {
+        [Bindable(true)]
+        public override string Text {
             get => _Text;
             set {
                 if (_Text == value)
@@ -145,6 +149,10 @@ namespace FaceMaterial.UI {
                 _Text = value;
                 FaceTextBoxBase.Text = value;
                 AfterTextChanged?.Invoke(_Text);
+                if (CompareWith != null) {
+                    IsCompare = _Text == CompareWith._Text;
+                    CompareWith.CheckIsCompaterEvent?.Invoke(IsCompare.Value);
+                }
             }
         }
 
@@ -216,8 +224,8 @@ namespace FaceMaterial.UI {
             }
 
         }
-
         private bool _AutoScaleByText;
+
         [Category("Text")]
         [Description("Multiline == false, Ignore this")]
         public bool AutoScaleByText {
@@ -264,6 +272,17 @@ namespace FaceMaterial.UI {
         [Category("Text")]
         public bool IsMatch { get; private set; }
 
+        [Category("Text")]
+        public bool? IsCompare { get; private set; }
+
+        private TextBox _CompareWith;
+        [Category("Text")]
+        public TextBox CompareWith {
+            get => _CompareWith; set {
+                _CompareWith = value;
+            }
+        }
+
         public new Color BackColor {
             get => base.BackColor;
             set {
@@ -279,7 +298,7 @@ namespace FaceMaterial.UI {
 
         public event Action<String> BeforeTextChanged;
         public event Action<String> AfterTextChanged;
-
+        public event Action<bool> CheckIsCompaterEvent;
 
         new event KeyEventHandler KeyDown {
             add => FaceTextBoxBase.KeyDown += value;
@@ -296,10 +315,9 @@ namespace FaceMaterial.UI {
         #endregion
 
         #region HiddenProperties
-        [EditorBrowsable(EditorBrowsableState.Always)]
-        public new string Text {
-            get; set;
-        }
+        //[EditorBrowsable(EditorBrowsableState.Always)]
+
+
         #endregion
 
         #endregion
@@ -312,6 +330,7 @@ namespace FaceMaterial.UI {
         }
 
         private void InitializeValues() {
+
             //LineColor = Color.DodgerBlue;
             ForeColor = Color.DodgerBlue;
             LineColor = Color.DodgerBlue;
@@ -331,13 +350,13 @@ namespace FaceMaterial.UI {
             FontChanged += TextBox_FontChanged;
             LineStateSwitch += TextBox_LineSizeStateSwitch;
             FaceTextBoxBase.TextChanged += FaceTextBoxBase_TextChanged;
+            CheckIsCompaterEvent += TextBox_CheckIsCompaterEvent;
 
             void PromptedTextBox_Paint(object sender, PaintEventArgs e) => EventPaint(e);
 
             void TextBox_Resize(object sender, EventArgs e) => EventResize();
 
             void TextBox_FontChanged(object sender, EventArgs e) => EventResize();
-
 
             #region EventHelper
             void EventPaint(PaintEventArgs e) {
@@ -363,24 +382,33 @@ namespace FaceMaterial.UI {
                 Padding padding = Padding;
                 padding.Bottom = LineHeight;
                 Padding = padding;
-
-                if (!string.IsNullOrEmpty(Patter) && !string.IsNullOrEmpty(Input)) {
-                    IsMatch = Regex.IsMatch(Input, Patter);
-                    Pen tempPen = new Pen(IsMatch ? LineColor : PatterError, LineHeight);
+                if (!string.IsNullOrEmpty(Patter) && !string.IsNullOrEmpty(Text)) {
+                    IsMatch = Regex.IsMatch(Text, Patter);
+                    bool tmpchoose = IsMatch;
+                    if (IsCompare.HasValue) {
+                        tmpchoose &= IsCompare.Value;
+                    }
+                    Pen tempPen = new Pen(tmpchoose ? LineColor : PatterError);
                     SetPen(tempPen);
-                } else if (string.IsNullOrEmpty(Input)) {
+                } else if (string.IsNullOrEmpty(Text)) {
                     Color tempColor = IsntInput != null ? IsntInput.Value : LineColor;
                     Pen tempPen = new Pen(tempColor, LineHeight);
                     SetPen(tempPen);
                 } else {
                     Pen tempPen = new Pen(LineColor, LineHeight);
+                    if (IsCompare.HasValue) {
+                        tempPen.Color = IsCompare.Value ? LineColor : PatterError;
+                    }
                     SetPen(tempPen);
                 }
 
 
                 void SetPen(Pen pen) {
-                    if (LinePen == null)
+                    if (LinePen == null) {
                         LinePen = pen;
+                        Invalidate();
+                        return;
+                    }
                     if (LinePen.Color != pen.Color) {
                         LinePen = pen;
                         Invalidate();
@@ -390,7 +418,7 @@ namespace FaceMaterial.UI {
 
             void FaceTextBoxBase_TextChanged(object sender, EventArgs e) {
                 string value = (sender as System.Windows.Forms.TextBox).Text;
-                Input = value;
+                Text = value;
                 EventResize();
             }
 
@@ -403,7 +431,7 @@ namespace FaceMaterial.UI {
                     }
                 } else {
                     if (AutoScaleByText) {
-                        string text = string.IsNullOrEmpty(Input) ? " " : Input;
+                        string text = string.IsNullOrEmpty(Text) ? " " : Text;
                         Font font = Font;
                         Size textSize = TextRenderer.MeasureText(text, font);
                         int val = textSize.Height + LineMarginToText + LineHeight;
@@ -421,7 +449,25 @@ namespace FaceMaterial.UI {
                 }
                 TextBox_LineSizeStateSwitch();
             }
+
+            void TextBox_CheckIsCompaterEvent(bool checker) {
+                if (!IsCompare.HasValue) {
+                    IsCompare = checker;
+                    TextBox_LineSizeStateSwitch();
+                    return;
+                }
+                if (IsCompare.Value != checker) {
+                    IsCompare = checker;
+                    TextBox_LineSizeStateSwitch();
+                }
+            }
             #endregion
+        }
+
+
+        public void TriggerTextChange() {
+            BeforeTextChanged?.Invoke(Text);
+            AfterTextChanged?.Invoke(Text);
         }
     }
 }
