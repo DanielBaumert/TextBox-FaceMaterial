@@ -300,15 +300,15 @@ namespace FaceMaterial.UI {
         public event Action<String> AfterTextChanged;
         public event Action<bool> CheckIsCompaterEvent;
 
-        new event KeyEventHandler KeyDown {
+        public new event KeyEventHandler KeyDown {
             add => FaceTextBoxBase.KeyDown += value;
             remove => FaceTextBoxBase.KeyDown -= value;
         }
-        new event KeyEventHandler KeyUp {
+        public new event KeyEventHandler KeyUp {
             add => FaceTextBoxBase.KeyUp += value;
             remove => FaceTextBoxBase.KeyUp -= value;
         }
-        new event KeyPressEventHandler KeyPress {
+        public new event KeyPressEventHandler KeyPress {
             add => FaceTextBoxBase.KeyPress += value;
             remove => FaceTextBoxBase.KeyPress -= value;
         }
